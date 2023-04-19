@@ -6,14 +6,14 @@ Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN�
 无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
 
 #### 软件架构
-软件架构说明
+交友平台，主要面对学生群体，可以提供学习和娱乐的匹配队友
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  基于springboot项目构建
+2.  数据库:( )
+3.  前端vue
 
 #### 使用说明
 

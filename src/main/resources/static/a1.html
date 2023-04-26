@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>登录</title>
+  <meta charset="utf-8">
+</head>
+<body>
+<h1>登录</h1>
+<form>
+  <label for="username">用户名：</label>
+  <input type="text" id="username" name="username" required><br><br>
+  <label for="password">密码：</label>
+  <input type="password" id="password" name="password" required><br><br>
+  <input type="submit" value="登录">
+</form>
+
+<script src="js/jquery-3.6.4.js"></script>
+<script>
+  $(function() {
+    $("form").submit(function(event) {
+      event.preventDefault(); // 阻止表单默认提交行为
+
+      // 获取用户名和密码
+      var username = $("#username").val();
+      var password = $("#password").val();
+
+      // 发送登录请求
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/a", // 后端处理登录的接口地址
+        data: {
+          username: username,
+          password: password
+        },
+        success: function(response) {
+          console.log(response);
+          if (response) {
+            // 登录成功，跳转到主页
+            window.location.href = "main.html";
+          } else {
+            alert("登录失败：" + response.message);
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert("登录失败：" + errorThrown);
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

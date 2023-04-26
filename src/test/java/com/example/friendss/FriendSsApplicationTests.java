@@ -1,6 +1,8 @@
 package com.example.friendss;
 
+import com.example.friendss.Mapper.LearnMapper;
 import com.example.friendss.Mapper.UserMapper;
+import com.example.friendss.pojo.Learn;
 import com.example.friendss.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
@@ -16,11 +18,13 @@ class FriendSsApplicationTests {
     UserMapper userMapper;
     @Autowired
     DataSource dataSource;
+    @Autowired
+    LearnMapper learnMapper;
     @Test
     void contextLoads() {
-       // User user=userMapper.g();
-       // System.out.println(user);
-        User user1=userMapper.h();
+        User user=userMapper.h();
+        System.out.println(user);
+        Learn user1=learnMapper.all();
         System.out.println(user1);
     }
 

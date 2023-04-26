@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json文件数据渲染</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        td{
+            width: 120px;
+            padding-left: 35px;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>password</td>
+            <td>phone</td>
+            <td>sex</td>
+            <td>idNumber</td>
+            <td>status</td>
+        </tr>
+        </thead >
+        <tbody id="jsonTip">
+
+        </tbody>
+    </table>
+</div>-
+
+
+<script>
+    window.onload=function requestData(){
+        $.ajax({
+            url: "http://localhost:8080/h",
+            type: "get",
+            dataType: "json",
+            success: function(data){
+            /*这个方法里是ajax发送请求成功之后执行的代码*/
+                getData(data);//我们仅做数据展示
+            },
+       error: function(msg){
+           alert("ajax连接异常："+msg);
+            }
+        });
+       };
+
+    // 获取json文件数据
+    function getData(data){
+            // 获取数据渲染的位置
+            var $jsontip=$("#jsonTip");
+            // 定义一个变量存储要显示的数据
+            var s="";
+            // 清空数据
+            $jsontip.empty();
+            // 遍历拿到的数据（此处采用each方法，也可以采用for循环）
+            console.log(data);
+            $.each(data,function(index,value){
+                s = "<tr><td>" + value.id+ "</td><td>" + value.name+ "</td><td>" + value.password + "</td>" +
+                    "<td>" + value.phone + "</td><td>" + value.sex + "</td>" +
+                    "<td>" + value.idNumber + "</td><td>" + value.status + "</td></tr>";
+                // 将要展示的数据追加到页面
+                console.log(s+" a");
+                $jsontip.append(s);
+            })
+    }
+
+</script>
+
+</body>
+</html>
